@@ -2,6 +2,7 @@ import { getUserByEmail} from "../controllers/userController.js";
 import { getEnv, sendResStatus } from "../helpers.js";
 import jwt from "jsonwebtoken";
 
+// The middleware checks if there is a user with the same email
 export const verifyEmail = async (req, res, next) => {
   const { email } = req.body;
 
@@ -18,6 +19,7 @@ export const verifyEmail = async (req, res, next) => {
   }
 };
 
+// The middleware check if all data passed from user for registration
 export const verifyRegistration = (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -27,6 +29,7 @@ export const verifyRegistration = (req, res, next) => {
   next();
 };
 
+// The middleware validates a password for registration
 export const validatePassword = (req, res, next) => {
   const errorMessage =
     "Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character.";
@@ -42,6 +45,7 @@ export const validatePassword = (req, res, next) => {
     return sendResStatus(res, 400, errorMessage);
 };
 
+// The middleware checks if token is valid
 export const verifyToken = async (req, res, next) => {
   const { token } = req.headers;
 

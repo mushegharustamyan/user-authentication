@@ -9,6 +9,7 @@ import { signIn } from "../controllers/auth.js";
 
 export const authRouter = express.Router();
 
+// Registration rout
 authRouter.post(
   "/register",
   verifyRegistration,
@@ -16,4 +17,6 @@ authRouter.post(
   validatePassword,
   register
 );
+
+// Sign in Rout
 authRouter.post("/signIn", signIn);

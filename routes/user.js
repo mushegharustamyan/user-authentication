@@ -4,4 +4,5 @@ import { verifyToken } from "../middlewares/user.js";
 
 export const userRouter = express.Router();
 
+// Getting own data rout
 userRouter.get("/show", verifyToken, show);
