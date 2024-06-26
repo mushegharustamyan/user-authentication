@@ -1,9 +1,19 @@
-import express from "express"
-import { register } from "../controllers/register.js"
-import { verifyEmail, verifyRegistration } from "../middlewares/user.js"
-import { signIn } from "../controllers/signIn.js"
+import express from "express";
+import { register } from "../controllers/auth.js";
+import {
+  validatePassword,
+  verifyEmail,
+  verifyRegistration,
+} from "../middlewares/user.js";
+import { signIn } from "../controllers/auth.js";
 
-export const authRouter = express.Router()
+export const authRouter = express.Router();
 
-authRouter.post("/register", verifyRegistration ,verifyEmail ,register)
-authRouter.post("/signIn",signIn)
+authRouter.post(
+  "/register",
+  verifyRegistration,
+  verifyEmail,
+  validatePassword,
+  register
+);
+authRouter.post("/signIn", signIn);

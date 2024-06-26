@@ -1,15 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+import { configureRouter, getEnv } from "./helpers.js";
 import { connectionInit } from "./db/init.js";
 import { sequelize } from "./db/sequelize.js";
-import { configureRouter } from "./helpers.js";
 
-dotenv.config();
 const app = express();
 app.use(express.json());
 configureRouter(app);
 
-app.listen(5000, async () => {
+const port = getEnv("SERVER_PORT");
+
+app.listen(port, async () => {
   console.log("listen 5000");
   try {
     await connectionInit();

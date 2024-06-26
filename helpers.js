@@ -1,11 +1,13 @@
 import { authRouter } from "./routes/auth.js";
+import { userRouter } from "./routes/user.js";
 
 export const getEnv = (key) => {
   return process.env[`${key}`];
 };
 
 export const configureRouter = (app) => {
-  app.use("/user", authRouter);
+  app.use("/auth", authRouter);
+  app.use("/user", userRouter);
 };
 
 export const sendResStatus = (res, status, message = "") => {
@@ -45,7 +47,7 @@ export const sendResStatus = (res, status, message = "") => {
         message = "Unknown error";
     }
   }
-  
+
   res.statusMessage = message;
   return res.status(status).send();
 };
