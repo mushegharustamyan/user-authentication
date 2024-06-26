@@ -19,7 +19,7 @@ To run the server, you need an .env file. You can create one by copying the .env
 `npm run dev`
 
 ### Run server
-`npm strat`
+`npm start`
 
 ---
 
